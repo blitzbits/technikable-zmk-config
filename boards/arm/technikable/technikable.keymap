@@ -37,6 +37,19 @@
 #endif
     };
 
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+
 //    conditional_layers {
 //        compatible = "zmk,conditional-layers";
 //	tri_layer {
@@ -53,7 +66,7 @@
             bindings = <
 #ifdef MOD_TAPS
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
- &kp TAB    &mt LCTRL A      &mt LALT R      &mt LGUI S       &mt LSHFT T          &mt LGUI G          &mt RGUI M            &mt RSHFT N          &mt RGUI E       &mt RALT I      &mt RCTRL O        &kp BKSP
+ &kp TAB    &hm LCTRL A      &hm LALT R      &hm LGUI S       &hm LSHFT T          &hm LGUI G          &hm RGUI M            &hm RSHFT N          &hm RGUI E       &hm RALT I      &hm RCTRL O        &kp BKSP
  &kp LSHFT  &kp Z      &kp X      &kp C       &kp D          &kp V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
