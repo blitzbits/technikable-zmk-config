@@ -67,7 +67,7 @@
 #ifdef MOD_TAPS
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &hm LCTRL A      &hm LALT R      &hm LGUI S       &hm LSHFT T          &hm LGUI G          &hm RGUI M            &hm RSHFT N          &hm RGUI E       &hm RALT I      &hm RCTRL O        &kp BKSP
- &kp LSHFT  &kp Z      &kp X      &kp C       &kp D          &kp V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH     &kp RSHFT
+ &kp LSHFT  &kp Z      &kp X      &kp C   &hm (LSHFT | LCTRL | LALT) D   &hm (LSHFT | LCTRL | LALT | LGUI) V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
