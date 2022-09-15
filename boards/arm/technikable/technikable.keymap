@@ -81,7 +81,7 @@
 #elif defined(TBLE_MIT)
                       &trans     &trans      &trans                &trans             &trans      &trans   &trans
 #else
-                      &trans     &trans      &trans          &trans       &RET    &trans  &trans         &trans
+                      &trans     &trans      &trans          &trans       &kp RET    &trans  &trans         &trans
 #endif
             >;
         };
@@ -113,7 +113,7 @@
 #elif defined(TBLE_MIT)
                       &trans     &kp LS(N0)      &trans                &trans             &trans      &trans   &trans
 #else
-                      &trans     &kp LS(N0)      &trans          &RET       &trans    &trans  &trans         &trans
+                      &trans     &kp LS(N0)      &trans          &kp RET       &trans    &trans  &trans         &trans
 #endif
             >;
         };
