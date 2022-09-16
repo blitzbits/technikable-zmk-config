@@ -49,6 +49,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+        taptest: tap_test {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAP_TEST";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&>, <&kp>;
+        };
     };
 
     macros {
@@ -92,18 +101,18 @@
 #ifdef MOD_TAPS
  &kp ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
  &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &kp BKSP
- &kp LSHFT  &kp Z         &kp X      &kp C       &hm meh D         &hm hyper V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
+ &kp LSHFT  &kp Z         &kp X      &kp C       &kp D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
- &kp LSHFT  &kp Z      &kp X      &kp C       &kp D          &kp V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH     &kp RSHFT
+ &kp LSHFT  &kp Z      &kp X      &kp C       &taptest meh D          &taptest hyper V          &kp K            &kp H          &kp COMMA   &kp DOT    &kp FSLH     &kp RSHFT
 #endif
 #ifdef TBLE_DUAL_2U
                        &kp LCTRL  &kp LALT      &lt NAV_L SPACE                &lt NUM_L SPACE              &kp RALT    &kp RCTRL
 #elif defined(TBLE_MIT)
                        &kp LCTRL  &kp LALT    &mo NAV_L          &kp SPACE                   &mo NUM_L      &kp RALT    &kp RCTRL
 #else
-                       &none   &none     &mo NAV_L      &kp SPACE      &mo NUM_L         &mo SYM_L      &none   &none 
+                       &meh   &hyper     &mo NAV_L      &kp SPACE      &mo NUM_L         &mo SYM_L      &none   &none 
 #endif
             >;
         };
