@@ -21,6 +21,7 @@
 #define SYM_L 3
 #define MEDIA_L 4
 #define MACRO_L 5
+#define BS_L 6
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
@@ -76,6 +77,70 @@
                 , <&macro_release &kp LSHFT &kp LCTRL &kp LALT>
                 ;
         };
+        bs2: bs2 {
+            label = "bs2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 10>
+                , <&macro_tap &kp BKSP &kp BKSP>
+                ;
+        };
+        bs3: bs3 {
+            label = "bs3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 50>
+                , <&macro_tap &kp BKSP &kp BKSP &kp BKSP>
+                ;
+        };
+        bs4: bs4 {
+            label = "bs4";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 50>
+                , <&macro_tap &kp BKSP &kp BKSP &kp BKSP &kp BKSP>
+                ;
+        };
+        bs5: bs5 {
+            label = "bs5";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 50>
+                , <&macro_tap &kp BKSP &kp BKSP &kp BKSP &kp BKSP &kp BKSP>
+                ;
+        };
+        bs6: bs6 {
+            label = "bs6";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 50>
+                , <&macro_tap &kp BKSP &kp BKSP &kp BKSP &kp BKSP &kp BKSP &kp BKSP>
+                ;
+        };
+        cmdtab: cmdtab {
+            label = "cmdtab_key";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <10>;
+            bindings
+                = <&macro_tap_time 10>
+                , <&macro_press &kp LGUI>
+                , <&macro_tap &kp TAB>
+                , <&macro_press &mo NAV_L>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo NAV_L &kp LGUI>
+                ;
+        };
     };
 
 
@@ -95,8 +160,8 @@
             bindings = <
 #ifdef MOD_TAPS
  &kp ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
- &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &kp BKSP
- &kp LSHFT  &kp Z         &kp X      &kp C       &hm (LSHFT | LCTRL | LALT) D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
+ &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &lt BS_L BKSP
+ &kp LSHFT  &kp Z         &kp X      &kp C       &kp D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
@@ -107,7 +172,7 @@
 #elif defined(TBLE_MIT)
                        &kp LCTRL  &kp LALT    &mo NAV_L          &kp SPACE                   &mo NUM_L      &kp RALT    &kp RCTRL
 #else
-                       &meh   &hyper     &mo NAV_L      &kp SPACE      &mo NUM_L         &mo SYM_L      &none   &none 
+                       &meh   &hyper     &mo NAV_L      &kp SPACE      &mo NUM_L         &mo SYM_L      &cmdtab   &none 
 #endif
             >;
         };
@@ -175,7 +240,21 @@
 #endif
             >;
         };
-
+        bs_layer {
+            label = "Backspace";
+            bindings = <
+ &none      &none      &none       &none        &none      &none       &none       &none       &none    &none       &none     &none 
+ &none       &none      &none      &none       &none        &none        &bs6        &bs5        &bs4        &bs3    &bs2           &trans
+&none        &none      &none      &none       &none         &none        &none        &none        &none        &none   &none           &trans
+#ifdef TBLE_DUAL_2U
+                      &trans     &trans              &trans                    &trans       &trans         &trans
+#elif defined(TBLE_MIT)
+                      &trans     &trans      &trans                &trans             &trans      &trans   &trans
+#else
+                      &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans
+#endif
+            >;
+        };
     };
 };
 
