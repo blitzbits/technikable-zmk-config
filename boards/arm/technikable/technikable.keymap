@@ -20,8 +20,7 @@
 #define NUM_L 2
 #define SYM_L 3
 #define MEDIA_L 4
-#define MACRO_L 5
-#define BS_L 6
+#define BS_L 5
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
