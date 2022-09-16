@@ -56,8 +56,10 @@
             label = "hyper_key";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <10>;
             bindings
-                = <&macro_press &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                = <&macro_tap_time 10>
+                , <&macro_press &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
                 , <&macro_pause_for_release>
                 , <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
                 ;
@@ -66,8 +68,10 @@
             label = "meh_key";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
+            wait-ms = <10>;
             bindings
-                = <&macro_press &kp LSHFT &kp LCTRL &kp LALT>
+                = <&macro_tap_time 10>
+                , <&macro_press &kp LSHFT &kp LCTRL &kp LALT>
                 , <&macro_pause_for_release>
                 , <&macro_release &kp LSHFT &kp LCTRL &kp LALT>
                 ;
@@ -92,7 +96,7 @@
 #ifdef MOD_TAPS
  &kp ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
  &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &kp BKSP
- &kp LSHFT  &kp Z         &kp X      &kp C       &kp D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
+ &kp LSHFT  &kp Z         &kp X      &kp C       &hm (LSHFT | LCTRL | LALT) D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
