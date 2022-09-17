@@ -58,6 +58,15 @@
 //            flavor = "tap-preferred";
 //            bindings = <&>, <&>;
 //        };
+        mehd: mehd {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Meh_D";
+            binding-cells = <0>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&meh>, <&kp D>;
+        };
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
@@ -225,7 +234,7 @@
 #ifdef MOD_TAPS
  &kp ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
  &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &lt BS_L BKSP
- &kp LSHFT  &kp Z         &kp X      &kp C       &kp D         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
+ &kp LSHFT  &kp Z         &kp X      &kp C       &mehd         &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
