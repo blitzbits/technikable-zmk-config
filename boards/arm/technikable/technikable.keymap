@@ -49,9 +49,68 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+        mtmacro: mtmacro {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ModTap_Macros";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&>, <&>;
+        };
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&paste>, <&copy>, <&cut>;
+        };
     };
 
     macros {
+        paste: paste {
+            label = "paste_key";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <20>;
+            bindings
+                = <&macro_tap_time 20>
+                , <&macro_tap &kp LGUI &kp V>
+                ;
+        };
+        copy: copy {
+            label = "copy_key";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <20>;
+            bindings
+                = <&macro_tap_time 20>
+                , <&macro_tap &kp LGUI &kp C>
+                ;
+        };
+        cut: cut {
+            label = "cut_key";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <20>;
+            bindings
+                = <&macro_tap_time 20>
+                , <&macro_tap &kp LGUI &kp X>
+                ;
+        };
+        cuthold: cuthold {
+            label = "cuthold_key";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <20>;
+            bindings
+                = <&macro_tap_time 20>
+                , <&macro_press &kp LGUI &kp X>
+                , <&macro_pause_for_release>
+                , <&macro_press &kp LGUI &kp V>
+                ;
+        };
+
         hyper: hyper {
             label = "hyper_key";
             compatible = "zmk,behavior-macro";
@@ -180,7 +239,7 @@
             label = "Nav";
             bindings = <
 &none     &none     &none     &none       &none          &none       &none      &kp PG_UP      &kp UARW       &kp PG_DN    &none      &none 
-&none     &none      &none      &none       &none        &none       &kp HOME      &kp LARW       &kp DARW    &kp RARW   &kp END   &kp DEL
+&none     &none      &none      &none       &td0        &none       &kp HOME      &kp LARW       &kp DARW    &kp RARW   &kp END   &kp DEL
 &none     &none      &none      &none       &none       &none        &none       &none        &none    &none    &none    &trans
 #ifdef TBLE_DUAL_2U
                       &trans     &trans              &trans                    &trans       &trans         &trans
@@ -227,8 +286,8 @@
         media_layer {
             label = "Media";
             bindings = <
- &bt BT(0)  &bt BT(1)  &bt BT(2) &bt BT(3)    &bt BT(4)     &none       &none       &none       &none     &kp C_VOL_UP    &bt BT_CLR      &none 
-&kp A        &none      &none      &none       &none        &none        &none       &kp C_PREV       &kp C_VOL_DN     &kp C_NEXT    &none           &none
+ &bt BT(0)  &bt BT(1)  &bt BT(2) &bt BT(3)    &bt BT(4)     &none       &none       &none       &none     &kp C_VOL_UP    &bt BT_CLR      &bootloader 
+&none        &none      &none      &none       &none        &none        &none       &kp C_PREV       &kp C_VOL_DN     &kp C_NEXT    &none           &none
 &none        &none      &none      &none       &none         &none        &none       &kp C_PREV       &kp C_PLAY_PAUSE     &kp C_NEXT    &none           &trans
 #ifdef TBLE_DUAL_2U
                       &trans     &trans              &trans                    &trans       &trans         &trans
