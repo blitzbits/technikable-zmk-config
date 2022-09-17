@@ -75,7 +75,9 @@
             wait-ms = <20>;
             bindings
                 = <&macro_tap_time 20>
-                , <&macro_tap &kp LGUI &kp V>
+                , <&macro_press &kp LGUI>
+                , <&macro_tap &kp V>
+                , <&macro_release &kp LGUI>
                 ;
         };
         copy: copy {
@@ -85,7 +87,9 @@
             wait-ms = <20>;
             bindings
                 = <&macro_tap_time 20>
-                , <&macro_tap &kp LGUI &kp C>
+                , <&macro_press &kp LGUI>
+                , <&macro_tap &kp C>
+                , <&macro_release &kp LGUI>
                 ;
         };
         cut: cut {
@@ -95,7 +99,9 @@
             wait-ms = <20>;
             bindings
                 = <&macro_tap_time 20>
-                , <&macro_tap &kp LGUI &kp X>
+                , <&macro_press &kp LGUI>
+                , <&macro_tap &kp X>
+                , <&macro_release &kp LGUI>
                 ;
         };
         cuthold: cuthold {
