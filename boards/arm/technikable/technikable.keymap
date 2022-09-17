@@ -57,7 +57,7 @@
 //            quick-tap-ms = <0>;
 //            flavor = "tap-preferred";
 //            bindings = <&>, <&>;
-        };
+//        };
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
