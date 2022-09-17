@@ -49,14 +49,14 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        mtmacro: mtmacro {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ModTap_Macros";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&>, <&>;
+//        mtmacro: mtmacro {
+//            compatible = "zmk,behavior-hold-tap";
+//            label = "ModTap_Macros";
+//            #binding-cells = <2>;
+//            tapping-term-ms = <200>;
+//            quick-tap-ms = <0>;
+//            flavor = "tap-preferred";
+//            bindings = <&>, <&>;
         };
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
