@@ -21,6 +21,9 @@
 #define SYM_L 3
 #define MEDIA_L 4
 #define BS_L 5
+#define ESC_L 6
+#define TAB_L 7
+
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
 &lt { quick_tap_ms = <200>; };
@@ -232,9 +235,9 @@
             label = "Base";
             bindings = <
 #ifdef MOD_TAPS
- &kp ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
- &kp TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &lt BS_L BKSP
- &kp LSHFT  &kp Z         &kp X      &kp C       &kp D        &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
+ &lt ESC_L ESC    &kp Q         &kp W      &kp F       &kp P         &kp B          &kp J            &kp L          &kp U       &kp Y       &kp MINUS    &none 
+ &lt TAB_L TAB    &hm LCTRL A   &hm LALT R &hm LGUI S  &hm LSHFT T   &hm LGUI G    &hm RGUI M        &hm RSHFT N    &hm RGUI E  &hm RALT I  &hm RCTRL O  &lt BS_L BKSP
+ &kp LSHFT  &hm LSHFT Z         &kp X      &kp C       &kp D        &kp V          &kp K            &kp H          &kp COMMA   &kp DOT     &kp FSLH     &kp RSHFT
 #else
  &kp ESC    &kp Q      &kp W      &kp F       &kp P          &kp B          &kp J            &kp L          &kp U       &kp Y      &kp MINUS     &none 
  &kp TAB    &kp A      &kp R      &kp S       &kp T          &kp G          &kp M            &kp N          &kp E       &kp I      &kp O        &kp BKSP
@@ -253,9 +256,9 @@
         nav_layer {
             label = "Nav";
             bindings = <
-&none     &none     &none     &none       &none          &none       &none      &kp PG_UP      &kp UARW       &kp PG_DN    &none      &none 
-&none     &none      &none      &none       &td0        &none       &kp HOME      &kp LARW       &kp DARW    &kp RARW   &kp END   &kp DEL
-&none     &none      &none      &none       &none       &none        &none       &none        &none    &none    &none    &trans
+&trans     &none     &none     &none       &none          &none       &none      &kp PG_UP      &kp UARW       &kp PG_DN    &none      &none 
+&trans     &kp LCTRL      &kp LALT      &kp LGUI       &td0        &kp LGUI       &kp HOME      &kp LARW       &kp DARW    &kp RARW   &kp END   &kp DEL
+&kp LSHFT     &kp LSHFT      &none      &none       &none       &none        &none       &none        &none    &none    &none    &trans
 #ifdef TBLE_DUAL_2U
                       &trans     &trans              &trans                    &trans       &trans         &trans
 #elif defined(TBLE_MIT)
@@ -301,8 +304,8 @@
         media_layer {
             label = "Media";
             bindings = <
- &bt BT(0)  &bt BT(1)  &bt BT(2) &bt BT(3)    &bt BT(4)     &none       &none       &none       &none     &kp C_VOL_UP    &bt BT_CLR      &bootloader 
-&none        &none      &none      &none       &none        &none        &none       &kp C_PREV       &kp C_VOL_DN     &kp C_NEXT    &none           &none
+&none      &none      &none       &none         &none    &none       &none       &none       &none     &kp C_VOL_UP    &none        &bootloader 
+&none        &bt BT(0)  &bt BT(1)  &bt BT(2) &bt BT(3)    &bt BT(4)        &none       &kp C_PREV       &kp C_VOL_DN     &kp C_NEXT    &none           &bt BT_CLR 
 &none        &none      &none      &none       &none         &none        &none       &kp C_PREV       &kp C_PLAY_PAUSE     &kp C_NEXT    &none           &trans
 #ifdef TBLE_DUAL_2U
                       &trans     &trans              &trans                    &trans       &trans         &trans
@@ -318,6 +321,36 @@
             bindings = <
  &none      &none      &none       &none        &none      &none       &none       &none       &none    &none       &none     &none 
  &none       &none      &none      &none       &none        &none        &bs6        &bs5        &bs4        &bs3    &bs2           &trans
+&none        &none      &none      &none       &none         &none        &none        &none        &none        &none   &none           &trans
+#ifdef TBLE_DUAL_2U
+                      &trans     &trans              &trans                    &trans       &trans         &trans
+#elif defined(TBLE_MIT)
+                      &trans     &trans      &trans                &trans             &trans      &trans   &trans
+#else
+                      &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans
+#endif
+            >;
+        };
+        esc_layer {
+            label = "ESC";
+            bindings = <
+ &trans      &none      &none       &none        &none      &none       &none       &none       &none    &none       &none     &none 
+ &none       &none      &none      &none       &none        &none        &bs6        &bs5        &bs4        &bs3    &bs2           &trans
+&none        &none      &none      &none       &none         &none        &none        &none        &none        &none   &none           &trans
+#ifdef TBLE_DUAL_2U
+                      &trans     &trans              &trans                    &trans       &trans         &trans
+#elif defined(TBLE_MIT)
+                      &trans     &trans      &trans                &trans             &trans      &trans   &trans
+#else
+                      &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans
+#endif
+            >;
+        };
+        tab_layer {
+            label = "Tab";
+            bindings = <
+ &none      &none      &none       &none        &none      &none       &none       &none       &none    &none       &none     &none 
+ &trans       &none      &none      &none       &none        &none         &none      &none      &none       &none        &none         &trans
 &none        &none      &none      &none       &none         &none        &none        &none        &none        &none   &none           &trans
 #ifdef TBLE_DUAL_2U
                       &trans     &trans              &trans                    &trans       &trans         &trans
